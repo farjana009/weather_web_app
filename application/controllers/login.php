@@ -53,6 +53,7 @@ class Login extends CI_Controller
 
 		if ($data) {
 			$this->session->set_userdata('user_email', $data['email']);
+			$this->login_model->update_last_signed_in_datetime($data['email']);
 			redirect('login/home');
 		} else {
 			//$this->load->view('login');
@@ -69,10 +70,44 @@ class Login extends CI_Controller
 			$user_email = $this->session->userdata('user_email');
 			$data['profile'] = $this->login_model->get_user_profile($user_email);
 //			print_r($data['profile']);
-			if ($data['profile']->is_admin == 1)
+			if ($data['profile']->is_admin == 1){
 				$this->load->view('admin/dashboard', isset($data) ? $data : NULL);
-			else
-				$this->load->view('user/dashboard',isset($data) ? $data : NULL);
+
+			}
+			else{
+				//echo $this->input->post('search_by_city');
+				$data['weather_info']=array();
+				if($this->input->post('search_by_city')!=''){
+					$apiKey = "49cc8c821cd2aff9af04c9f98c36eb74";//API KEY
+					//$cityId = "1185241";//CITY ID 524901=Moscow
+					$city_name=$this->input->post('search_by_city');
+					$googleApiUrl = "http://api.openweathermap.org/data/2.5/weather?q=" . $city_name . "&lang=en&units=metric&APPID=" . $apiKey;
+
+					$ch = curl_init();
+
+					curl_setopt($ch, CURLOPT_HEADER, 0);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+					curl_setopt($ch, CURLOPT_URL, $googleApiUrl);
+					curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+					curl_setopt($ch, CURLOPT_VERBOSE, 0);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+					$response = curl_exec($ch);
+
+					curl_close($ch);
+					$data['weather_info'] = json_decode($response);
+					if($data['weather_info']->cod != "404"){
+						$data['weather_info'] = json_decode($response);
+					}else{
+						$data['weather_info']=array();
+						$data['city_name']=$this->input->post('search_by_city');
+					}
+					//print_r($data['weather_info']);
+					//$currentTime = time();
+				}
+
+				$this->load->view('user/dashboard',isset($data) ? $data : NULL,'refresh');
+
+			}
 		} else {
 			redirect('/');
 		}

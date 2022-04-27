@@ -16,14 +16,15 @@
 	<nav class="navbar" style="float: right">
 		<div class="container-fluid">
 			<ul class="nav navbar-nav">
-				<?php if($this->session->userdata('user_email')) {?>
-				<li class=""><a href="<?php echo base_url('login/logout'); ?>">Logout</a></li>
-				<li class=""><a href="<?php echo base_url('user/user_profile'); ?>">User Profile</a></li>
-				<li class=""><a href="<?php echo base_url('user/review'); ?>">Review Page</a></li>
-				<li class=""><a href="<?php echo base_url('/'); ?>">Home Page</a></li>
+				<?php if ($this->session->userdata('user_email')) { ?>
+					<li class=""><a href="<?php echo base_url('login/logout'); ?>">Logout</a></li>
+					<li class=""><a href="<?php echo base_url('user/user_profile'); ?>">User Profile</a></li>
+					<li class=""><a href="<?php echo base_url('/'); ?>">Home Page</a></li>
 
-				<?php }else{ ?>
-				<li class=""><a href="<?php echo base_url('login/'); ?>">Login</a></li>
+				<?php } else { ?>
+					<li class=""><a href="<?php echo base_url('login/'); ?>">Login</a></li>
+					<li class=""><a href="<?php echo base_url('user/review'); ?>">Review Page</a></li>
+
 				<?php } ?>
 			</ul>
 			<form class="navbar-form navbar-left" action="/action_page.php">
@@ -58,7 +59,6 @@
 
 			</div>
 		</div>
-
 
 
 	</div>

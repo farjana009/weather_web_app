@@ -16,5 +16,11 @@ class Login_model extends CI_Model {
 		return $query->row();
 	}
 
+	function update_last_signed_in_datetime($email)
+	{
+			$this->db->update('users', array('lastsignedinon' => mdate('%Y-%m-%d %H:%i:%s', now())), array('email' => $email));
+
+	}
+
 }
 ?>
