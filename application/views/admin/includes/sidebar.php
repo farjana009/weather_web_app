@@ -1,6 +1,6 @@
       <ul class="sidebar navbar-nav">
         <li class="nav-item active <?php ?>">
-          <a class="nav-link" href="<?php echo base_url('login/admin_home'); ?>">
+          <a class="nav-link" href="<?php echo base_url('login/home'); ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span>
           </a>

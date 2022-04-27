@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin dashboard</title>
+    <title>User dashboard</title>
 
 <!-- Bootstrap core CSS-->
 	  <link type="text/css" rel="stylesheet" href="<?php echo base_url('resources/vendor/bootstrap/css/bootstrap.min.css'); ?>"/>
@@ -27,12 +27,12 @@
 
   <body id="page-top">
 
- <?php include APPPATH.'views/admin/includes/header.php';?>
+ <?php include APPPATH.'views/User/includes/header.php';?>
 
     <div id="wrapper">
 
       <!-- Sidebar -->
- <?php include APPPATH.'views/admin/includes/sidebar.php';?>
+ <?php include APPPATH.'views/User/includes/sidebar.php';?>
 
       <div id="content-wrapper">
 
@@ -41,7 +41,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="<?php echo site_url('user/Dashboard'); ?>">Admin</a>
+              <a href="<?php echo site_url('user/Dashboard'); ?>">User</a>
             </li>
             <li class="breadcrumb-item active">Dashboard</li>
           </ol>
@@ -61,7 +61,7 @@
         <!-- /.container-fluid -->
 
         <!-- Sticky Footer -->
-   <?php include APPPATH.'views/admin/includes/footer.php';?>
+   <?php include APPPATH.'views/User/includes/footer.php';?>
 
       </div>
       <!-- /.content-wrapper -->
@@ -92,6 +92,13 @@
  <script src="<?php echo base_url('resources/js/demo/datatables-demo.js'); ?>"></script>
  <script src="<?php echo base_url('resources/js/demo/chart-area-demo.js'); ?>"></script>
 
+
   </body>
 
 </html>
+<script type="text/javascript">
+	$(document).ready(function () {
+	$("#user_dashboard").addClass('active');
+	});
+
+</script>

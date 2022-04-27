@@ -178,7 +178,6 @@
 		if (given_pass != '' && confirm_pass != '') {
 			if (given_pass != confirm_pass){
 				$("#password_not_match").show('');
-				return false;
 			}
 			else{
 				$("#password_not_match").hide('');

@@ -108,9 +108,10 @@
 									<!--                      <td>--><?php //echo htmlentities($row->createdon)
 									?><!--</td>-->
 									<td>
-										<a class="fa fa-edit" href="<?php echo base_url(); ?>admin/edit/<?php echo $row->id; ?>">&nbsp;&nbsp;&nbsp;
+										<a class="fa fa-edit" href="<?php echo base_url(); ?>admin/edit/<?php echo $row->id; ?>"></a>
+										&nbsp;&nbsp;&nbsp;
 											<a onclick="alert('Are you sure to delete data?');" class="fa fa-trash"
-											   href="<?php echo base_url(); ?>admin/delete/<?php echo $row->id; ?>">
+											   href="<?php echo base_url(); ?>admin/delete/<?php echo $row->id; ?>"></a>
 
 									</td>
 								</tr>

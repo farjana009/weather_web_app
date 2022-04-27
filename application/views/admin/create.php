@@ -69,7 +69,7 @@
 					  </div>
 				  <?php endif; ?>
 
-				<form role="form" action="<?php base_url('admin/create') ?>" method="post" enctype="multipart/form-data">
+				<form role="form" action="<?php echo base_url('admin/create') ?>" method="post" enctype="multipart/form-data">
 					<div class="box-body">
 
 						<div class="form-group">
@@ -178,6 +178,7 @@
 		if (given_pass != '' && confirm_pass != '') {
 			if (given_pass != confirm_pass){
 				$("#password_not_match").show('');
+				return false;
 			}
 			else{
 				$("#password_not_match").hide('');

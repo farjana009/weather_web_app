@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Admin - Edit Users</title>
+	<title>User - Profile</title>
 
 	<!-- Bootstrap core CSS-->
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url('resources/vendor/bootstrap/css/bootstrap.min.css'); ?>"/>
@@ -25,11 +25,11 @@
 </head>
 
 <body id="page-top">
-<?php include APPPATH.'views/admin/includes/header.php';?>
+<?php include APPPATH.'views/user/includes/header.php';?>
 
 <div id="wrapper">
 
-	<?php include APPPATH.'views/admin/includes/sidebar.php';?>
+	<?php include APPPATH.'views/user/includes/sidebar.php';?>
 
 	<div id="content-wrapper">
 
@@ -38,9 +38,9 @@
 			<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="<?php echo site_url('admin/Dashboard'); ?>">Admin</a>
+					<a href="<?php echo site_url('user/Dashboard'); ?>">User</a>
 				</li>
-				<li class="breadcrumb-item active">Edit Users</li>
+				<li class="breadcrumb-item active">User Profile</li>
 			</ol>
 
 			<!-- DataTables Example -->
@@ -48,7 +48,7 @@
 				<div class="card-header">
 				<span style="float: left">
               <i class="fas fa-table"></i>
-             Edit Users</span>
+             Profile</span>
 
 				</div>
 
@@ -57,7 +57,6 @@
 				<div class="card-body">
 					<div class="table-responsive">
 						<!---- Success Message ---->
-
 						<?php if($this->session->flashdata('success')): ?>
 							<div class="alert alert-success alert-dismissible" role="alert">
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -69,27 +68,15 @@
 								<?php echo $this->session->flashdata('error'); ?>
 							</div>
 						<?php endif; ?>
-						<form role="form" action="<?php echo base_url('admin/edit') ?>" method="post" enctype="multipart/form-data">
+
+						<form role="form" action="<?php echo base_url('user/edit') ?>" method="post" enctype="multipart/form-data">
 							<div class="box-body">
 
 								<div class="form-group">
 									<label for="email">Email</label>
-									<input type="email" class="form-control" id="email" name="email" placeholder="Email"
-										  value="<?php echo $user_data['email'] ?>" autocomplete="off" required>
-								</div>
-
-								<div class="form-group">
-									<label for="password">Password</label>
-									<input type="text" class="form-control" id="password" name="password"
-										    placeholder="Password" autocomplete="off">
-								</div>
-
-								<div class="form-group">
-									<label for="cpassword">Confirm password</label>
-									<input onblur="checkPassword();" type="password" class="form-control" id="cpassword"
-										   readonly onfocus="this.removeAttribute('readonly');" name="cpassword"
-										    placeholder="Confirm Password" autocomplete="off">
-									<span id="password_not_match" style="color: red; display: none;">Your given password and confirm password does not match.</span>
+									<input readonly="true" type="email" class="form-control" id="email" name="email" placeholder="Email"
+										   value="<?php echo $user_data['email'] ?>" autocomplete="off" required>
+									<input type="hidden" id="user_id" name="user_id" value="<?php echo $user_data['id'] ?>" >
 								</div>
 
 								<div class="form-group">
@@ -110,22 +97,12 @@
 										   value="<?php echo $user_data['phone'] ?>"  autocomplete="off">
 								</div>
 
-								<div class="form-group">
-									<label for="phone">User is Admin</label>
-									<input type="checkbox" name="is_admin" id="is_admin" value="1" class="minimal" <?php if($user_data['is_admin']==1) echo "checked"; ?>>
-								</div>
-
-								<!--						<div class="form-group">-->
-								<!--							<label for="profile_picture">Profile Picture</label>-->
-								<!--							<input class="form-control" type="file" name="profile_picture" id="profile_picture">-->
-								<!--						</div>-->
 
 							</div>
 							<!-- /.box-body -->
 
 							<div class="box-footer">
 								<button type="submit" class="btn btn-primary">Save Changes</button>
-								<a href="<?php echo base_url('admin/') ?>" class="btn btn-warning">Back</a>
 							</div>
 						</form>
 					</div>
@@ -138,7 +115,7 @@
 		<!-- /.container-fluid -->
 
 		<!-- Sticky Footer -->
-		<?php include APPPATH.'views/admin/includes/footer.php';?>
+		<?php include APPPATH.'views/user/includes/footer.php';?>
 
 	</div>
 	<!-- /.content-wrapper -->
@@ -172,20 +149,6 @@
 
 </html>
 <script type="text/javascript">
-	function checkPassword() {
-		var given_pass = $("#password").val();
-		var confirm_pass = $("#cpassword").val();
-		if (given_pass != '' && confirm_pass != '') {
-			if (given_pass != confirm_pass){
-				$("#password_not_match").show('');
-				return false;
-			}
-			else{
-				$("#password_not_match").hide('');
-				return true;
-			}
 
-		}
-
-	}
+$("#my_profile").addClass('active');
 </script>

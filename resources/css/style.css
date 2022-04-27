@@ -200,15 +200,15 @@ body{
 	.current-info .navbar{
 		float: left;
 	}
-	.navbar .navbar-nav > li > a{
-		/*color: #fff;*/
-		color: #fff;
-		font-size: 22px;
-	}
-	.navbar .navbar-nav > li > a:hover{
-		background-color: transparent;
-		font-size: 22px;
-	}
+	/*.navbar .navbar-nav > li > a{*/
+	/*	!*color: #fff;*!*/
+	/*	color: #fff;*/
+	/*	font-size: 16px;*/
+	/*}*/
+	/*.navbar .navbar-nav > li > a:hover{*/
+	/*	background-color: transparent;*/
+	/*	font-size: 16px;*/
+	/*}*/
 
 }
 
@@ -223,10 +223,10 @@ body{
 /***************** custom navbar ****************/
 .navbar .navbar-nav > li > a{
 	/*color: #fff;*/
-	font-size: 16px;
+	font-size: 14px !important;
 }
 .navbar .navbar-nav > li > a:hover{
 	color: #fff;
 	background-color: transparent;
-	font-size: 16px;
+	font-size: 14px !important;
 }
