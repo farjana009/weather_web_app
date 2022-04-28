@@ -224,9 +224,94 @@ body{
 .navbar .navbar-nav > li > a{
 	/*color: #fff;*/
 	font-size: 14px !important;
+	background-color: transparent !important;
 }
 .navbar .navbar-nav > li > a:hover{
 	color: #fff;
-	background-color: transparent;
+	background-color: transparent !important;
 	font-size: 14px !important;
+}
+
+/**************** custom style for modal ******************/
+.modal-backdrop
+{
+	opacity:0.5 !important;
+}
+.modal-review {
+	color: #636363;
+	width: 600px;
+	max-width: 100%;
+}
+.modal-review .modal-content {
+	padding: 20px;
+	border-radius: 5px;
+	/*border: 1px solid white;*/
+	border: none;
+	background-color: #2a2727;
+}
+.modal-review .modal-header {
+	border-bottom: none;
+	position: relative;
+	justify-content: center;
+}
+.modal-review h4 {
+	text-align: center;
+	font-size: 26px;
+}
+.modal-review  .form-group {
+	position: relative;
+}
+.modal-review i {
+	position: absolute;
+	left: 13px;
+	top: 11px;
+	font-size: 18px;
+}
+.modal-review .form-control {
+	padding-left: 40px;
+}
+.modal-review .form-control:focus {
+	border-color: #aff0f3;
+}
+.modal-review .form-control, .modal-review .btn {
+	min-height: 40px;
+	border-radius: 3px;
+}
+.modal-review .hint-text {
+	text-align: center;
+	padding-top: 10px;
+}
+.modal-review .close {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+}
+.modal-review .btn, .modal-review .btn:active {
+	border: 1px solid whitesmoke;
+	background: none !important;
+	line-height: normal;
+	color: #fff;
+}
+.modal-review .btn:hover, .modal-review .btn:focus {
+	background: #edf9f4 !important;
+	color: black;
+}
+.modal-review .modal-footer {
+	/*background: #ecf0f1;*/
+	border-color: #dee4e7;
+	text-align: center;
+	margin: 0 -20px -20px;
+	border-radius: 5px;
+	font-size: 13px;
+	justify-content: center;
+}
+.modal-review .modal-footer a {
+	color: #999;
+}
+.trigger-btn {
+	display: inline-block;
+	margin: 100px auto;
+}
+.modal-review .mandatory_marks {
+color: red !important;
 }

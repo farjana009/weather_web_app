@@ -93,6 +93,7 @@
 				  <form class="navbar-form navbar-left" method="post" action="<?php echo base_url('login/home') ?>">
 					  <div class="input-group">
 						  <input type="text" class="form-control" name="search_by_city" placeholder="Search by city name">
+						  <input type="hidden" class="form-control" name="page_id" id="page_id" value="user_home">
 						  <div class="input-group-append">
 							  <button class="btn btn-secondary" type="submit">
 								  <i class="fa fa-search"></i>
@@ -103,7 +104,7 @@
 			  </div>
           </div>
 
-			<?php if($weather_info){ ?>
+			<?php if($weather_info && $city_name){ ?>
 				<div class="row">
 					<div id="weather_info_div" class="col-lg-12 col-md-12 col-xl-12 col-sm-12">
 						<div class="report-container">
@@ -128,11 +129,19 @@
 					</div>
 
 				</div>
+			<?php } else if($city_name==''){ ?>
+				<div class="row">
+					<div id="" class="col-lg-12 col-md-12 col-xl-12 col-sm-12">
+						<h5 style="text-align: center; color:darkslateblue; ">&nbsp;</h5>
+
+					</div>
+
+				</div>
 			<?php } else{
 				?>
 				<div class="row">
 					<div id="" class="col-lg-12 col-md-12 col-xl-12 col-sm-12">
-						<h5 style="text-align: center; color:darkslateblue; "><?php echo ucfirst($city_name); ?> City Not Found.</h5>
+						<h5 style="text-align: center; color:darkslateblue; "><?php if(isset($city_name))echo ucfirst($city_name); ?> City Not Found.</h5>
 
 					</div>
 

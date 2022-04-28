@@ -10,10 +10,10 @@ class Admin_model extends CI_Model
 	}
 
 //Getting particular user deatials on the basis of id
-	public function getuserdetail($uid)
+	public function getuserdetail($email)
 	{
 		$ret = $this->db->select('*')->where('email', $email)->get('users');
-		return $ret->row();
+		return $ret->row_array();
 	}
 
 	// Function for use deletion
@@ -53,6 +53,18 @@ class Admin_model extends CI_Model
 			return $query->row_array();
 		}
 
+	}
+
+	public function update_password($password, $id = null)
+	{
+		$data = array(
+			'password' => $password
+		);
+
+		$this->db->where('id', $id);
+		$update = $this->db->update('users', $data);
+
+		return ($update == true) ? true : false;
 	}
 
 

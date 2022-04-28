@@ -30,6 +30,7 @@ class User_model extends CI_Model
 
 		return ($update == true) ? true : false;
 	}
+
 	public function update_password($password, $id = null)
 	{
 		$data = array(
@@ -53,6 +54,17 @@ class User_model extends CI_Model
 		}
 
 	}
+
+//	public function save_review($data = array())
+//	{
+//		$create = $this->db->insert('review', $data);
+//
+//		$review_id = $this->db->insert_id();
+//
+//
+//		return $review_id;
+//	}
+
 
 
 }

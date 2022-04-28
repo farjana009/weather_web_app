@@ -13,15 +13,25 @@
 		  </li>
      
          <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('admin/User_profile'); ?>">
+          <a class="nav-link" href="<?php echo base_url('admin/profile'); ?>">
             <i class="fas fa-fw fa-user"></i>
             <span>My Profile</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url('user/Change_password'); ?>">
+          <a class="nav-link" href="<?php echo base_url('admin/change_password'); ?>">
             <i class="fas fa-fw fa-table"></i>
             <span>Change Pasword</span></a>
         </li>
+		  <li class="nav-item">
+			  <a class="nav-link" href="<?php echo base_url('review/'); ?>">
+				  <i class="fas fa-fw fa-table"></i>
+				  <span>Review Management</span></a>
+		  </li>
+		  <li class="nav-item">
+			  <a class="nav-link" href="<?php echo base_url('review/weather_search_logs/'); ?>">
+				  <i class="fas fa-fw fa-table"></i>
+				  <span>Weather Search Logs</span></a>
+		  </li>
 
     <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url('login/logout'); ?>">

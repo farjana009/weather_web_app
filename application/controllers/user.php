@@ -57,7 +57,6 @@ class User extends CI_Controller
 		$this->load->view('user/change_password', isset($data) ? $data : NULL);
 
 	}
-
 	public function edit_password()
 	{
 		if (!$this->session->userdata('user_email')) {
@@ -193,6 +192,37 @@ class User extends CI_Controller
 			}
 		}
 	}
+
+//	public function save_review()
+//	{
+////		if (!$this->session->userdata('user_email')) {
+////			redirect('/');
+////		}
+//		$user_email = $this->session->userdata('user_email');
+//		$user_data = $this->user_model->getusersdetails($user_email);
+//		if($user_data)
+//			$user_id=$user_data['id'];
+//		else
+//			$user_id=0;
+//		$data = array(
+//			//'password' => $password,
+//			'name' => $this->input->post('review_name'),
+//			'user_id' => $user_id,
+//			'email' => $this->input->post('review_email'),
+//			'review_details' => $this->input->post('review_details'),
+//			'created_at' => date('Y-m-d H:i:s')
+////								'profile_picture' => $new_name,
+//		);
+//
+//		$insert_id = $this->user_model->save_review($data);
+//		if($insert_id)
+//			echo $insert_id;
+//		else
+//			echo 0;
+//		//$this->load->view('user/change_password', isset($data) ? $data : NULL);
+//
+//	}
+
 
 
 }

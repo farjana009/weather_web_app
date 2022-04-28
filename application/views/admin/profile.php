@@ -9,7 +9,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Admin - Change Password</title>
+	<title>Admin - Profile</title>
 
 	<!-- Bootstrap core CSS-->
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url('resources/vendor/bootstrap/css/bootstrap.min.css'); ?>"/>
@@ -25,11 +25,11 @@
 </head>
 
 <body id="page-top">
-<?php include APPPATH.'views/Admin/includes/header.php';?>
+<?php include APPPATH.'views/admin/includes/header.php';?>
 
 <div id="wrapper">
 
-	<?php include APPPATH.'views/Admin/includes/sidebar.php';?>
+	<?php include APPPATH.'views/admin/includes/sidebar.php';?>
 
 	<div id="content-wrapper">
 
@@ -38,9 +38,9 @@
 			<!-- Breadcrumbs-->
 			<ol class="breadcrumb">
 				<li class="breadcrumb-item">
-					<a href="<?php echo site_url('Admin/Dashboard'); ?>">Admin</a>
+					<a href="<?php echo site_url('admin/Dashboard'); ?>">Admin</a>
 				</li>
-				<li class="breadcrumb-item active"> Change Password</li>
+				<li class="breadcrumb-item active">Admin Profile</li>
 			</ol>
 
 			<!-- DataTables Example -->
@@ -48,7 +48,7 @@
 				<div class="card-header">
 				<span style="float: left">
               <i class="fas fa-table"></i>
-              Change Password</span>
+             Profile</span>
 
 				</div>
 
@@ -69,23 +69,32 @@
 							</div>
 						<?php endif; ?>
 
-						<form role="form" action="<?php echo base_url('Admin/edit_password') ?>" method="post" enctype="multipart/form-data">
+						<form role="form" action="<?php echo base_url('admin/edit_profile') ?>" method="post" enctype="multipart/form-data">
 							<div class="box-body">
 
 								<div class="form-group">
-									<label for="password">Password</label>
-									<input type="text" class="form-control" id="password" name="password"
-										   placeholder="Password" autocomplete="off" required>
+									<label for="email">Email</label>
+									<input readonly="true" type="email" class="form-control" id="email" name="email" placeholder="Email"
+										   value="<?php echo $user_data['email'] ?>" autocomplete="off" required>
 									<input type="hidden" id="user_id" name="user_id" value="<?php echo $user_data['id'] ?>" >
-
 								</div>
 
 								<div class="form-group">
-									<label for="cpassword">Confirm password</label>
-									<input required onblur="checkPassword();" type="password" class="form-control" id="cpassword"
-										   readonly onfocus="this.removeAttribute('readonly');" name="cpassword"
-										   placeholder="Confirm Password" autocomplete="off">
-									<span id="password_not_match" style="color: red; display: none;">Your given password and confirm password does not match.</span>
+									<label for="fname">First name</label>
+									<input type="text" class="form-control" id="fname" name="fname" placeholder="First name"
+										   value="<?php echo $user_data['first_name'] ?>" autocomplete="off">
+								</div>
+
+								<div class="form-group">
+									<label for="lname">Last name</label>
+									<input type="text" class="form-control" id="lname" name="lname" placeholder="Last name"
+										   value="<?php echo $user_data['last_name'] ?>"   autocomplete="off">
+								</div>
+
+								<div class="form-group">
+									<label for="phone">Phone</label>
+									<input type="text" class="form-control" id="phone" name="phone" placeholder="Phone"
+										   value="<?php echo $user_data['phone'] ?>"  autocomplete="off">
 								</div>
 
 
@@ -106,7 +115,7 @@
 		<!-- /.container-fluid -->
 
 		<!-- Sticky Footer -->
-		<?php include APPPATH.'views/Admin/includes/footer.php';?>
+		<?php include APPPATH.'views/admin/includes/footer.php';?>
 
 	</div>
 	<!-- /.content-wrapper -->
@@ -140,23 +149,6 @@
 
 </html>
 <script type="text/javascript">
-	function checkPassword() {
-		var given_pass = $("#password").val();
-		var confirm_pass = $("#cpassword").val();
-		if (given_pass != '' && confirm_pass != '') {
-			if (given_pass != confirm_pass){
-				$("#password_not_match").show('');
-				return false;
-			}
-			else{
-				$("#password_not_match").hide('');
-				return true;
-			}
 
-		}
-
-	}
-	setTimeout(function(){ $(".alert-success").hide('');$(".alert-error").hide(''); }, 3000);
-		$("#change_password").addClass('active');
-
+$("#my_profile").addClass('active');
 </script>

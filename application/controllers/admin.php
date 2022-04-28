@@ -283,5 +283,88 @@ class Admin extends CI_Controller
 		}
 	}
 
+	public function profile()
+	{
+		if (!$this->session->userdata('user_email')) {
+			redirect('login/');
+		}
+
+		$user_email = $this->session->userdata('user_email');
+
+		$data['user_data'] = $this->admin_model->getuserdetail($user_email);
+//		print_r($data['user_data']);
+
+		$this->load->view('admin/profile', isset($data) ? $data : NULL);
+	}
+
+
+	public function edit_profile()
+	{
+		if (!$this->session->userdata('user_email')) {
+			redirect('/');
+		}
+		$id = $this->input->post('user_id');
+		//die();
+		if ($id) {
+
+			if ($this->input->post('email') != '') {
+
+				$data = array(
+					//'password' => $password,
+					'email' => $this->input->post('email'),
+					'first_name' => $this->input->post('fname'),
+					'last_name' => $this->input->post('lname'),
+					'phone' => $this->input->post('phone'),
+//								'profile_picture' => $new_name,
+				);
+//				print_r($data);
+//				die();
+				$update = $this->admin_model->edit($data, $id);
+				if ($update == true) {
+					$this->session->set_flashdata('success', 'Successfully updated');
+					redirect('admin/profile', 'refresh');
+				} else {
+					$this->session->set_flashdata('errors', 'Error occurred!!');
+					redirect('admin/profile/', 'refresh');
+				}
+
+
+			}
+		}
+
+	}
+	public function change_password()
+	{
+		if (!$this->session->userdata('user_email')) {
+			redirect('/');
+		}
+		$user_email = $this->session->userdata('user_email');
+
+		$data['user_data'] = $this->admin_model->getuserdetail($user_email);
+		$this->load->view('admin/change_password', isset($data) ? $data : NULL);
+
+	}
+	public function edit_password()
+	{
+		if (!$this->session->userdata('user_email')) {
+			redirect('/');
+		}
+		$password = $this->input->post('password');
+		$cpassword = $this->input->post('cpassword');
+		$user_id = $this->input->post('user_id');
+
+		$password = md5($this->input->post('password'));
+		$update = $this->admin_model->update_password($password, $user_id);
+		if ($update == true) {
+			$this->session->set_flashdata('success', 'Successfully updated');
+			redirect('admin/change_password', 'refresh');
+		} else {
+			$this->session->set_flashdata('errors', 'Error occurred!!');
+			redirect('admin/change_password', 'refresh');
+		}
+		//$this->load->view('user/change_password');
+
+	}
+
 
 }
